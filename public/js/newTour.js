@@ -58,7 +58,7 @@ navigator.geolocation.getCurrentPosition((position) => {
     //! get the time and inject it into date
 
     try {
-      fetch('/newTour', {
+      fetch('/new-tour', {
         method: 'POST',
         body: formData,
       })
