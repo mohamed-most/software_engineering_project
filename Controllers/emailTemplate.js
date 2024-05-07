@@ -22,6 +22,8 @@ exports.replaceTemplate = (user, tour) => {
       type="text/css"
     />
     <!--<![endif]-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <style>
       * {
         box-sizing: border-box;
@@ -2605,20 +2607,15 @@ exports.replaceTemplate = (user, tour) => {
                                       <tr>
                                         <td style="padding: 0 15px 0 0">
                                           <a
-                                            href="https://www.facebook.com"
+                                            href="https://github.com/mohamed-most/software_engineering_project"
                                             target="_blank"
-                                            ><img
-                                              alt="Facebook"
-                                              height="auto"
-                                              src="images/facebook2x.png"
-                                              style="
-                                                display: block;
-                                                height: auto;
-                                                border: 0;
-                                              "
-                                              title="Facebook"
-                                              width="32"
-                                          /></a>
+                                            >
+                                            <ion-icon style="display: block;
+                                            height: auto;
+                                            border: 0;
+                                            width:32px"
+                                            name="logo-github"></ion-icon>
+                                          </a>
                                         </td>
                                         <td style="padding: 0 15px 0 0">
                                           <a
@@ -2656,20 +2653,15 @@ exports.replaceTemplate = (user, tour) => {
                                         </td>
                                         <td style="padding: 0 15px 0 0">
                                           <a
-                                            href="https://www.linkedin.com/"
+                                            href="https://www.linkedin.com/in/ahmad-mahfouz-39674021a/details/projects/"
                                             target="_blank"
-                                            ><img
-                                              alt="LinkedIn"
-                                              height="auto"
-                                              src="images/linkedin2x.png"
-                                              style="
-                                                display: block;
-                                                height: auto;
-                                                border: 0;
-                                              "
-                                              title="LinkedIn"
-                                              width="32"
-                                          /></a>
+                                            >
+                                            <ion-icon style="display: block;
+                                            height: auto;
+                                            border: 0;
+                                            width:32px"
+                                            name="logo-linkedin"></ion-icon>
+                                            </a>
                                         </td>
                                       </tr>
                                     </table>
