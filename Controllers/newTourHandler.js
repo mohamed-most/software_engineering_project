@@ -27,30 +27,34 @@ exports.uploadTourPhoto = upload.fields([
 //! resizing tour photo
 exports.resizeTourImages = async (req, res, next) => {
   //! resize image cover
-  const imageCoverFilename = `tour-${req.user.id}-${Date.now()}-cover.jpg`;
-  await sharp(req.files.imageCover[0].buffer)
-    .resize(2000, 1333)
-    .toFormat('jpeg')
-    .jpeg({ quality: 90 })
-    .toFile(`${__dirname}/../public/img/tours/${imageCoverFilename}`);
-  // TODO: how to put this info in the tour model DB???
-  req.body.imageCover = imageCoverFilename;
-  //! resize tour images
-  req.body.images = [];
-  await Promise.all(
-    req.files.images.map(async (file, i) => {
-      const filename = `tour-${req.user.id}-${Date.now()}-${i + 1}.jpg`;
-      await sharp(file.buffer)
-        .resize(400, 266)
-        .toFormat('jpeg')
-        .jpeg({ quality: 100 })
-        .toFile(`${__dirname}/../public/img/tours/${filename}`);
-      req.body.images.push(filename);
-    }),
-  );
-  // TODO: how to put this info in the tour model DB???
+  try {
+    const imageCoverFilename = `tour-${req.user.id}-${Date.now()}-cover.jpg`;
+    await sharp(req.files.imageCover[0].buffer)
+      .resize(2000, 1333)
+      .toFormat('jpeg')
+      .jpeg({ quality: 90 })
+      .toFile(`${__dirname}/../public/img/tours/${imageCoverFilename}`);
+    // TODO: how to put this info in the tour model DB???
+    req.body.imageCover = imageCoverFilename;
+    //! resize tour images
+    req.body.images = [];
+    await Promise.all(
+      req.files.images.map(async (file, i) => {
+        const filename = `tour-${req.user.id}-${Date.now()}-${i + 1}.jpg`;
+        await sharp(file.buffer)
+          .resize(400, 266)
+          .toFormat('jpeg')
+          .jpeg({ quality: 100 })
+          .toFile(`${__dirname}/../public/img/tours/${filename}`);
+        req.body.images.push(filename);
+      }),
+    );
+    // TODO: how to put this info in the tour model DB???
 
-  next();
+    next();
+  } catch (err) {
+    console.log(err);
+  }
 };
 exports.renderNewTourUI = async (req, res) => {
   req.user = JSON.parse(
@@ -64,20 +68,24 @@ exports.renderNewTourUI = async (req, res) => {
 };
 
 exports.companyAuth = async (req, res, next) => {
-  const user = JSON.parse(
-    JSON.stringify(
-      await User.findOne({
-        _id: jwt.verify(req.cookies.jwt, process.env.JWT_SECRET).id,
-      }),
-    ),
-  );
-  if (user.role === 'company') {
-    next();
-  } else {
-    res.status(401).json({
-      status: '401 Unauthorized',
-      message: "YOU DON'T HAVE THE PRIVILEGES TO ENTER HERE ❌",
-    });
+  try {
+    const user = JSON.parse(
+      JSON.stringify(
+        await User.findOne({
+          _id: jwt.verify(req.cookies.jwt, process.env.JWT_SECRET).id,
+        }),
+      ),
+    );
+    if (user.role === 'company') {
+      next();
+    } else {
+      res.status(401).json({
+        status: '401 Unauthorized',
+        message: "YOU DON'T HAVE THE PRIVILEGES TO ENTER HERE ❌",
+      });
+    }
+  } catch (err) {
+    console.log(err);
   }
 };
 
