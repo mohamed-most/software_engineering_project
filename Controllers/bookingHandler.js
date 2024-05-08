@@ -32,7 +32,7 @@ const sendEmail = (customerEmail, tourName, emailTemplate) => {
 };
 
 const addTour = async (userID, bookedTourID) => {
-  console.log("Before adding tour 🧑🏿‍🦲");
+  console.log('Before adding tour 🧑🏿‍🦲');
   await User.findByIdAndUpdate(
     userID,
     { $push: { tours: bookedTourID } },
@@ -44,6 +44,7 @@ const addTour = async (userID, bookedTourID) => {
 //!STRIPE CHECKOUTS
 const stripeCheckout = async (req, res, bookedTour, loggedInUser) => {
   //!1)Getting items to be bought
+  const hostedUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
   const boughtItems = {
     price_data: {
       currency: 'usd',
@@ -51,7 +52,7 @@ const stripeCheckout = async (req, res, bookedTour, loggedInUser) => {
       product_data: {
         name: bookedTour.name,
         description: bookedTour.summary,
-        images: [bookedTour.imageCover],
+        images: [`${hostedUrl}${bookedTour.imageCover}`],
       },
     },
     quantity: 1,
@@ -121,7 +122,12 @@ exports.webhookCheckout = async (req, res) => {
     if (event.type === 'checkout.session.completed') {
       const session = event.data.object;
       const customerEmail = session.customer_email;
-      console.log(this.sessionUserID," User ID\n",this.bookedTourID,"\n Booked tour ID");
+      console.log(
+        this.sessionUserID,
+        ' User ID\n',
+        this.bookedTourID,
+        '\n Booked tour ID',
+      );
       await addTour(this.sessionUserID, this.bookedTourID);
       sendEmail(customerEmail, this.tourName, this.emailTemplate);
     }
