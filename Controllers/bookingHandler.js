@@ -44,7 +44,7 @@ const addTour = async (userID, bookedTourID) => {
 //!STRIPE CHECKOUTS
 const stripeCheckout = async (req, res, bookedTour, loggedInUser) => {
   //!1)Getting items to be bought
-  const hostedUrl = "https://natours-0ulj.onrender.com/public/img/tours/";
+  const hostedUrl = "	https://natours-0ulj.onrender.com/img/tours/";
   const boughtItems = {
     price_data: {
       currency: 'usd',
