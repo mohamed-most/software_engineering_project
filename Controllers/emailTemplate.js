@@ -1,4 +1,5 @@
 exports.replaceTemplate = (user, tour) => {
+  const hostedUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
   return `<!DOCTYPE html>
 <html
   lang="en"
@@ -216,7 +217,7 @@ exports.replaceTemplate = (user, tour) => {
                                     <div style="max-width: 195px">
                                       <img
                                         height="auto"
-                                        src="images/logo-white.png"
+                                        src="${hostedUrl}images/logo-white.png"
                                         style="
                                           display: block;
                                           height: auto;
@@ -892,7 +893,7 @@ exports.replaceTemplate = (user, tour) => {
                                         ><img
                                           alt="Tour"
                                           height="auto"
-                                          src="${tour.imageCover}"
+                                          src="${hostedUrl}${tour.imageCover}"
                                           style="
                                             display: block;
                                             height: auto;
@@ -2624,7 +2625,7 @@ exports.replaceTemplate = (user, tour) => {
                                             ><img
                                               alt="Twitter"
                                               height="auto"
-                                              src="images/twitter2x.png"
+                                              src="${hostedUrl}images/twitter2x.png"
                                               style="
                                                 display: block;
                                                 height: auto;
@@ -2641,7 +2642,7 @@ exports.replaceTemplate = (user, tour) => {
                                             ><img
                                               alt="Instagram"
                                               height="auto"
-                                              src="images/instagram2x.png"
+                                              src="${hostedUrl}images/instagram2x.png"
                                               style="
                                                 display: block;
                                                 height: auto;
@@ -3058,7 +3059,7 @@ exports.replaceTemplate = (user, tour) => {
                                                   alt="Beefree Logo"
                                                   class="icon"
                                                   height="auto"
-                                                  src="images/Beefree-logo.png"
+                                                  src="${hostedUrl}images/Beefree-logo.png"
                                                   style="
                                                     display: block;
                                                     height: auto;
