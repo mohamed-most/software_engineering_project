@@ -217,7 +217,7 @@ exports.replaceTemplate = (req,user, tour) => {
                                     <div style="max-width: 195px">
                                       <img
                                         height="auto"
-                                        src="${hostedUrl}images/logo-white.png"
+                                        src="${hostedUrl}/logo-white.png"
                                         style="
                                           display: block;
                                           height: auto;
