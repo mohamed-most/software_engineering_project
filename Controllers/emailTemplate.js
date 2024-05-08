@@ -1,4 +1,4 @@
-exports.replaceTemplate = (user, tour) => {
+exports.replaceTemplate = (req,user, tour) => {
   const hostedUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
   return `<!DOCTYPE html>
 <html
