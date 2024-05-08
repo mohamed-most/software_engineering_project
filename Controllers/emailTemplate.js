@@ -1,5 +1,5 @@
 exports.replaceTemplate = (req,user, tour) => {
-  const hostedUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  const hostedUrl = "https://natours-0ulj.onrender.com/";
   return `<!DOCTYPE html>
 <html
   lang="en"
