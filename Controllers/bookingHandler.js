@@ -44,7 +44,7 @@ const addTour = async (userID, bookedTourID) => {
 //!STRIPE CHECKOUTS
 const stripeCheckout = async (req, res, bookedTour, loggedInUser) => {
   //!1)Getting items to be bought
-  const hostedUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  const hostedUrl = "https://natours-0ulj.onrender.com/";
   const boughtItems = {
     price_data: {
       currency: 'usd',
@@ -122,12 +122,6 @@ exports.webhookCheckout = async (req, res) => {
     if (event.type === 'checkout.session.completed') {
       const session = event.data.object;
       const customerEmail = session.customer_email;
-      console.log(
-        this.sessionUserID,
-        ' User ID\n',
-        this.bookedTourID,
-        '\n Booked tour ID',
-      );
       await addTour(this.sessionUserID, this.bookedTourID);
       sendEmail(customerEmail, this.tourName, this.emailTemplate);
     }
