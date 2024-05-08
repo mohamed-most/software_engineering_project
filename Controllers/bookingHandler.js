@@ -89,7 +89,7 @@ exports.bookTour = async (req, res) => {
         }),
       ),
     );
-    exports.emailTemplate = emailTemplate.replaceTemplate(
+    exports.emailTemplate = emailTemplate.replaceTemplate(req,
       loggedInUser,
       bookedTour,
     );
