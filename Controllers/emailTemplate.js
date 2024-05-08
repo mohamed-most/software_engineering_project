@@ -1,5 +1,5 @@
 exports.replaceTemplate = (req,user, tour) => {
-  const hostedUrl = "	https://natours-0ulj.onrender.com/img/";
+  const hostedUrl = "https://natours-0ulj.onrender.com/img/";
   return `<!DOCTYPE html>
 <html
   lang="en"
