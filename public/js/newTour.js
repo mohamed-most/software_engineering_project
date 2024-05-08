@@ -64,6 +64,7 @@ navigator.geolocation.getCurrentPosition((position) => {
       })
         .then((response) => {
           console.log('gg good');
+          window.location.href = '/home';
         })
         .catch((err) => {
           console.log('imbatakum' + err);
