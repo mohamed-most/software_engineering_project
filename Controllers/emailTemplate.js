@@ -1,5 +1,5 @@
 exports.replaceTemplate = (req,user, tour) => {
-  const hostedUrl = "https://natours-0ulj.onrender.com/";
+  const hostedUrl = "	https://natours-0ulj.onrender.com/img/";
   return `<!DOCTYPE html>
 <html
   lang="en"
@@ -893,7 +893,7 @@ exports.replaceTemplate = (req,user, tour) => {
                                         ><img
                                           alt="Tour"
                                           height="auto"
-                                          src="${hostedUrl}${tour.imageCover}"
+                                          src="	https://natours-0ulj.onrender.com/img/tours/${tour.imageCover}"
                                           style="
                                             display: block;
                                             height: auto;
@@ -2625,7 +2625,7 @@ exports.replaceTemplate = (req,user, tour) => {
                                             ><img
                                               alt="Twitter"
                                               height="auto"
-                                              src="${hostedUrl}images/twitter2x.png"
+                                              src="${hostedUrl}/twitter2x.png"
                                               style="
                                                 display: block;
                                                 height: auto;
@@ -2642,7 +2642,7 @@ exports.replaceTemplate = (req,user, tour) => {
                                             ><img
                                               alt="Instagram"
                                               height="auto"
-                                              src="${hostedUrl}images/instagram2x.png"
+                                              src="${hostedUrl}/instagram2x.png"
                                               style="
                                                 display: block;
                                                 height: auto;
@@ -3059,7 +3059,7 @@ exports.replaceTemplate = (req,user, tour) => {
                                                   alt="Beefree Logo"
                                                   class="icon"
                                                   height="auto"
-                                                  src="${hostedUrl}images/Beefree-logo.png"
+                                                  src="${hostedUrl}/Beefree-logo.png"
                                                   style="
                                                     display: block;
                                                     height: auto;
