@@ -78,17 +78,10 @@ const tourSchema = new mongoose.Schema(
       type: [Date],
       required: [true, 'A tour must have a start Date'],
     },
-    // startLocation: {
-    //   // GeoJSON
-    //   type: {
-    //     type: String,
-    //     default: 'Point',
-    //     enum: ['Point'],
-    //   },
-    //   coordinates: [Number],
-    //   address: String,
-    //   description: String,
-    // },
+    stops: {
+      type: Number,
+      default: 1,
+    },
     locations: [
       {
         type: {
