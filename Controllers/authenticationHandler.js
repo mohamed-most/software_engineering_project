@@ -28,15 +28,3 @@ exports.createSendToken = (user, statusCode, req, res) => {
     },
   });
 };
-exports.isAuth = (req, res, next) => {
-  try {
-    const user = jwt.verify(req.cookies.jwt, process.env.JWT_SECRET);
-    req.user = user;
-    if (user) {
-      return next();
-    }
-    res.redirect('/login');
-  } catch (err) {
-    res.redirect('/login');
-  }
-};
